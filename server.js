@@ -1,5 +1,4 @@
 require('dotenv').config();
-import { WebSocketServer } from 'ws';
 const express = require('express');
 const http = require('http');
 const { OAuth2Client } = require('google-auth-library');
