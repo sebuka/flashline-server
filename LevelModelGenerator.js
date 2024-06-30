@@ -8,7 +8,7 @@ class LevelModelGenerator {
         let localseed = seed;
         let model = null;
         model = this.generateModel(difficulty, localseed);
-		model.optimalPaths = -1;
+	model.optimalPaths = 100;
         model.seed = seed;
         return model;
     }
