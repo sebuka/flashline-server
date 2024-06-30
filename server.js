@@ -13,7 +13,7 @@ const client = new OAuth2Client(CLIENT_ID);
 
 const app = express();
 const server = http.createServer(app);
-const wss = new WebSocket.Server({ server });
+const wss = new WebSocketServer({ port: 443 });
 
 const clients = require('./clients');
 
