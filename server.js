@@ -3,16 +3,19 @@ const express = require('express');
 const http = require('http');
 const { OAuth2Client } = require('google-auth-library');
 const { sequelize } = require('./database');
+const WebSocket = require('ws');
 const profileRouter = require('./profiles');
 const { router: matchRouter, handleMessage } = require('./matches');
 const CLIENT_ID = process.env.CLIENT_ID;
 const client = new OAuth2Client(CLIENT_ID);
 
+
 const app = express();
 const server = http.createServer(app);
-const wss = new WebSocketServer({ server }); 
+const wss = new WebSocket.Server({ server });
 
 const clients = require('./clients');
+
 
 app.use(express.json());
 
@@ -41,11 +44,12 @@ wss.on('connection', (ws, req) => {
       delete clients[userId];
     });
 
-    ws.send(JSON.stringify({ message: 'connected', type: 'connection' }));
+    ws.send(JSON.stringify({ message: 'connected', type: 'connection' })); // Отправляем сообщение в формате JSON
   }).catch(err => {
     ws.close();
   });
 });
+
 
 app.use('/profiles', profileRouter);
 app.use('/matches', matchRouter);
