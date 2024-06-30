@@ -62,7 +62,7 @@ router.get('/profile', async (req, res) => {
   const googleId = req.query.googleId;
   try {
     const user = await User.findOne({ where: { googleId } });
-
+    console.log(user);
     if (user) {
       const rating = await getRating(user.mmr);
       const userWithRating = { ...user.toJSON(), rating };
@@ -72,6 +72,7 @@ router.get('/profile', async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ message: 'Internal server error', error: error.message });
+    console.log( error.message);
   }
 });
 
