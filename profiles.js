@@ -87,7 +87,7 @@ router.post('/updateProfile', async (req, res) => {
       user.name = name;
       user.desc = desc;
       await user.save();
-      res.status(200).json({ message: 'Profile updated successfull' });
+      res.status(200).json({ message: 'Profile updated successful' });
     } else {
       res.status(404).json({ message: 'User not found' });
     }
