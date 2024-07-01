@@ -195,7 +195,11 @@ function notifyClientsAboutMmrChange(finalMatch, delta1, delta2) {
 }
 
 function calculateMmr(score1, score2) {
-  return score1 < score2 ? (score1 / (score1 + score2)) * -100 : (score1 / (score1 + score2)) * 100;
+  try{
+    return score1 < score2 ? (score1 / (score1 + score2)) * -100 : (score1 / (score1 + score2)) * 100;
+  }catch(error){
+    return 0;
+  }
 }
 
 async function updatePlayerMmr(playerId, delta) {
