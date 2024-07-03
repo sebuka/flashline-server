@@ -32,7 +32,7 @@ async function getRating(mmr) {
 
     return null;
   } catch (error) {
-    console.error('Error getting rating:', error);
+    console.error('Error getting rting:', error);
     throw error;
   }
 }
